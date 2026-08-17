@@ -1,17 +1,15 @@
-import { SECTORS, type Sector } from '../data/content';
+import { REACH, REACH_EMERGING, SECTORS, type Sector } from '../data/content';
 import { useReveal } from '../hooks/useReveal';
 
-function SectorCard({ sector, index }: { sector: Sector; index: number }) {
-  const ref = useReveal<HTMLElement>();
+function SectorRow({ sector }: { sector: Sector }) {
+  const ref = useReveal<HTMLLIElement>();
   return (
-    <article className="sector" ref={ref}>
-      <span className="sector-num" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+    <li className="sector-row" ref={ref}>
       <h3>{sector.title}</h3>
-      <p>{sector.body}</p>
-      <ul className="tag-row">
+      <ul className="tag-row" role="list">
         {sector.tags.map(t => <li key={t}>{t}</li>)}
       </ul>
-    </article>
+    </li>
   );
 }
 
@@ -19,18 +17,18 @@ export default function Sectors() {
   return (
     <section className="section" id="sectors">
       <div className="container">
-        <div className="section-head">
+        <div className="section-head compact">
           <span className="section-eyebrow">Focus areas</span>
           <h2>Where our members actually work.</h2>
-          <p className="section-sub">
-            ETBA is not a general business club. These are the six areas our
-            programming, introductions, and partner requests keep coming back to.
+          <p className="country-line">
+            {REACH.map(r => `${r.flag} ${r.country}`).join(' · ')} — plus
+            members active in {REACH_EMERGING.length} more European countries.
           </p>
         </div>
 
-        <div className="sector-grid">
-          {SECTORS.map((s, i) => <SectorCard key={s.title} sector={s} index={i} />)}
-        </div>
+        <ul className="sector-list" role="list">
+          {SECTORS.map(s => <SectorRow key={s.title} sector={s} />)}
+        </ul>
       </div>
     </section>
   );

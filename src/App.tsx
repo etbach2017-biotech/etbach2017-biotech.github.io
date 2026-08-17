@@ -2,10 +2,9 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
 import Pillars from './components/Pillars';
-import Corridor from './components/Corridor';
 import Sectors from './components/Sectors';
-import Reach from './components/Reach';
 import Events from './components/Events';
+import Team from './components/Team';
 import Ecosystem from './components/Ecosystem';
 import Membership from './components/Membership';
 import Faq from './components/Faq';
@@ -21,10 +20,9 @@ export default function App() {
         <Hero />
         <About />
         <Pillars />
-        <Corridor />
         <Sectors />
-        <Reach />
         <Events />
+        <Team />
         <Ecosystem />
         <Membership />
         <Faq />

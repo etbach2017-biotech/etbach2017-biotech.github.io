@@ -4,8 +4,8 @@ import Brand from './Brand';
 const NAV_LINKS = [
   { href: '#about', label: 'About' },
   { href: '#pillars', label: 'What we do' },
-  { href: '#corridor', label: 'Corridor' },
-  { href: '#events', label: 'Events' },
+  { href: '#events', label: 'Events & news' },
+  { href: '#team', label: 'Team' },
   { href: '#membership', label: 'Membership' },
 ];
 

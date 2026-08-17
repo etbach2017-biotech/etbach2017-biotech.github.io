@@ -13,12 +13,6 @@ export type ReachItem = {
   highlight?: boolean;
 };
 
-export type EventItem = {
-  badge: string;
-  title: string;
-  body: string;
-  cta: string;
-};
 
 /* ───────── sign-up destinations ───────── */
 
@@ -30,7 +24,11 @@ export const SIGNUP_BUSINESS =
 
 export const CONTACT_EMAIL = 'contact@etba.ch';
 
-/* ───────── reach ───────── */
+/** Public event calendar. Members subscribe once and get every ETBA event. */
+export const LUMA_URL = 'https://luma.com/etba';
+
+/* ───────── reach ─────────
+   Rendered as a single country line inside the "Focus areas" section. */
 
 export const REACH: ReachItem[] = [
   { flag: '🇨🇭', country: 'Switzerland', cities: 'Basel · Zürich · Lausanne' },
@@ -54,43 +52,6 @@ export const REACH_EMERGING = [
   '🇨🇿 Czechia',
   '🇵🇹 Portugal',
   '🇫🇮 Finland',
-];
-
-/* ───────── Europe ⇄ Taiwan corridor ───────── */
-
-export type Hub = { city: string; note: string };
-
-export const HUBS_EUROPE: Hub[] = [
-  { city: 'Basel', note: 'BioValley: pharma HQs and CDMOs' },
-  { city: 'Munich', note: 'Martinsried / BioM campus' },
-  { city: 'Cambridge', note: 'Genomics & therapeutics cluster' },
-  { city: 'Leiden', note: 'Bio Science Park' },
-  { city: 'Copenhagen–Lund', note: 'Medicon Valley' },
-  { city: 'Paris–Saclay', note: 'Genopole & academic spin-outs' },
-];
-
-export const HUBS_TAIWAN: Hub[] = [
-  { city: 'Taipei', note: 'Nangang Biotech Park' },
-  { city: 'Zhunan', note: 'National Biotechnology Research Park' },
-  { city: 'Hsinchu', note: 'Science Park: biochip and medtech' },
-  { city: 'Taichung', note: 'Central Taiwan Science Park' },
-  { city: 'Tainan', note: 'Southern Taiwan Science Park' },
-  { city: 'Kaohsiung', note: 'Precision medicine & clinical trials' },
-];
-
-export const CORRIDOR_FACTS = [
-  {
-    stat: '2 ecosystems',
-    body: "Europe's regulatory depth and clinical networks meet Taiwan's precision manufacturing and speed.",
-  },
-  {
-    stat: '1 network',
-    body: 'One membership reaches both sides, with no cold outreach and no guessing who to call.',
-  },
-  {
-    stat: '8 time zones',
-    body: 'Chapters and online programming scheduled so both sides can actually attend.',
-  },
 ];
 
 /* ───────── biotech focus areas ───────── */
@@ -134,45 +95,70 @@ export const SECTORS: Sector[] = [
   },
 ];
 
-/* ───────── events ───────── */
+/* ───────── news & updates ───────── */
 
-export const EVENTS: EventItem[] = [
+export type NewsItem = {
+  /** Displayed as-is, e.g. 'March 2026'. */
+  date: string;
+  kind: 'Event' | 'Recap' | 'eDM' | 'Announcement' | 'Newsletter';
+  title: string;
+  body: string;
+  /**
+   * Optional photo or eDM artwork. Drop the file in `public/news/` and set
+   * this to `/news/<filename>`. Leave undefined for a text-only post.
+   */
+  image?: string;
+  /** Optional outward link: Luma page, newsletter issue, LinkedIn post, PDF. */
+  href?: string;
+  linkLabel?: string;
+};
+
+/**
+ * Newest first. To post an update: add an entry at the top of this array,
+ * and put any photo or eDM image in `public/news/`.
+ */
+export const NEWS: NewsItem[] = [
   {
-    badge: 'Upcoming',
-    title: 'Annual ETBA Symposium',
-    body: 'Our flagship gathering bringing speakers from across Europe and Taiwan together for a day of science, policy, and partnership.',
-    cta: 'Get notified →',
+    date: 'Ongoing',
+    kind: 'Event',
+    title: 'All ETBA events now on Luma',
+    body: 'Symposia, chapter meetups, webinars, and delegation trips are published on our Luma calendar. Subscribe once and every new event lands in your calendar automatically.',
+    href: LUMA_URL,
+    linkLabel: 'Subscribe to the calendar →',
   },
   {
-    badge: 'Recurring',
-    title: 'Country chapter meetups',
-    body: 'Informal evenings hosted by each country team, a low-pressure way to meet local members and visiting researchers.',
-    cta: 'Find your chapter →',
+    date: 'Every quarter',
+    kind: 'Newsletter',
+    title: 'ETBA quarterly newsletter',
+    body: 'A short round-up of chapter activity, member news, and openings across the Europe–Taiwan corridor. Members receive it by email; back issues are shared here.',
+    href: `mailto:${CONTACT_EMAIL}?subject=Newsletter`,
+    linkLabel: 'Ask for the latest issue →',
   },
-  {
-    badge: 'Online',
-    title: 'Seminars & webinars',
-    body: 'Talks on translational research, regulatory paths, and the business of biotech, recorded and shared with members.',
-    cta: 'Suggest a topic →',
-  },
-  {
-    badge: 'Corporate',
-    title: 'Industry roundtables',
-    body: 'Closed-door sessions for business members on partnering, manufacturing capacity, and market entry in both directions.',
-    cta: 'Request a seat →',
-  },
-  {
-    badge: 'Delegations',
-    title: 'Site visits & trade missions',
-    body: 'Curated visits to science parks, CDMOs, and university spin-outs, timed around major European and Taiwanese biotech weeks.',
-    cta: 'Join a delegation →',
-  },
-  {
-    badge: 'Careers',
-    title: 'Career & mentoring nights',
-    body: 'CV clinics, mock interviews, and honest conversations about moving between academia, industry, and continents.',
-    cta: 'Become a mentor →',
-  },
+];
+
+/* ───────── core team ───────── */
+
+export type TeamMember = {
+  /** Leave empty to show the seat as "To be announced". */
+  name: string;
+  role: string;
+  /** City or country, shown under the role. Optional. */
+  base?: string;
+  /**
+   * Optional headshot. Drop the file in `public/team/` and set this to
+   * `/team/<filename>`. Without it, the initials are shown instead.
+   */
+  photo?: string;
+};
+
+/** Current core team. Fill in the names and bases below as they are confirmed. */
+export const CORE_TEAM: TeamMember[] = [
+  { name: '', role: 'President' },
+  { name: '', role: 'Vice President' },
+  { name: '', role: 'Secretary General' },
+  { name: '', role: 'Treasurer' },
+  { name: '', role: 'Events & Programming' },
+  { name: '', role: 'Communications' },
 ];
 
 /* ───────── membership ───────── */
