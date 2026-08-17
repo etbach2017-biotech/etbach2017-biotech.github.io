@@ -21,8 +21,8 @@ export default function Events() {
           <span className="section-eyebrow light">Events</span>
           <h2>Where the community comes together.</h2>
           <p className="section-sub light">
-            From annual symposia to local mixers and online journal clubs —
-            our calendar is shaped by members, for members.
+            Our calendar runs from annual symposia to local mixers and online
+            journal clubs, shaped by members, for members.
           </p>
         </div>
 

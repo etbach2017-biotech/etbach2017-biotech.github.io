@@ -1,4 +1,4 @@
-# etba.ch — Europe-Taiwan Biotech Association
+# etba.ch: Europe-Taiwan Biotech Association
 
 The website for [ETBA](https://etba.ch), a network bridging biotech
 across Europe and Taiwan.

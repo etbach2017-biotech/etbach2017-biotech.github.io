@@ -1,3 +1,8 @@
+import { SIGNUP_BUSINESS, SIGNUP_INDIVIDUAL } from '../data/content';
+
+/** Rungs connecting the two strands of the background helix. */
+const RUNGS = Array.from({ length: 11 }, (_, i) => 60 + i * 55);
+
 export default function Hero() {
   return (
     <section className="hero" id="top">
@@ -9,11 +14,18 @@ export default function Hero() {
             </pattern>
           </defs>
           <rect width="800" height="600" fill="url(#dots)" />
-          <g stroke="rgba(255,255,255,0.22)" strokeWidth="1.4" fill="none">
-            <path d="M50 80 Q200 40 350 80 T650 80" />
-            <path d="M50 80 Q200 120 350 80 T650 80" />
-            <path d="M120 520 Q300 480 480 520 T780 520" />
-            <path d="M120 520 Q300 560 480 520 T780 520" />
+
+          {/* double helix: Europe strand and Taiwan strand */}
+          <g fill="none" strokeWidth="1.6">
+            <path d="M40 80 Q200 30 360 80 T680 80" stroke="rgba(125,211,252,0.35)" />
+            <path d="M40 80 Q200 130 360 80 T680 80" stroke="rgba(252,165,165,0.3)" />
+            <path d="M120 520 Q300 470 480 520 T800 520" stroke="rgba(125,211,252,0.28)" />
+            <path d="M120 520 Q300 570 480 520 T800 520" stroke="rgba(252,165,165,0.24)" />
+          </g>
+          <g stroke="rgba(255,255,255,0.14)" strokeWidth="1">
+            {RUNGS.map(x => (
+              <line key={x} x1={x} y1="62" x2={x} y2="98" />
+            ))}
           </g>
         </svg>
       </div>
@@ -27,24 +39,35 @@ export default function Hero() {
           </h1>
           <p className="lead">
             ETBA connects scientists, clinicians, and industry leaders advancing
-            biotechnology, pharmaceuticals, and medical technology — building
+            biotechnology, pharmaceuticals, and medical technology, building
             the partnerships that turn research into impact.
           </p>
           <div className="hero-actions">
             <a
-              href="https://octagonal-giant-a45.notion.site/367f9cd0402f803cbc00e9130e746802?pvs=105"
+              href={SIGNUP_INDIVIDUAL}
               className="btn btn-primary"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Sign up to join
+              Join as an individual
             </a>
-            <a href="#about" className="btn btn-ghost">Our mission →</a>
+            <a
+              href={SIGNUP_BUSINESS}
+              className="btn btn-ghost"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Business membership →
+            </a>
           </div>
+          <p className="hero-note">
+            Free for individuals · Tailored for organisations ·{' '}
+            <a href="#membership">see both options →</a>
+          </p>
           <ul className="hero-stats" aria-label="Key statistics">
             <li><strong>7</strong><span>country teams</span></li>
             <li><strong>20+</strong><span>countries reached</span></li>
-            <li><strong>3</strong><span>core pillars</span></li>
+            <li><strong>6</strong><span>focus areas</span></li>
           </ul>
         </div>
 

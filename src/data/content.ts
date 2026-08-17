@@ -20,15 +20,121 @@ export type EventItem = {
   cta: string;
 };
 
+/* ───────── sign-up destinations ───────── */
+
+export const SIGNUP_INDIVIDUAL =
+  'https://octagonal-giant-a45.notion.site/367f9cd0402f803cbc00e9130e746802?pvs=105';
+
+export const SIGNUP_BUSINESS =
+  'https://octagonal-giant-a45.notion.site/36cf9cd0402f8056a2e3cec974155066?pvs=105';
+
+export const CONTACT_EMAIL = 'contact@etba.ch';
+
+/* ───────── reach ───────── */
+
 export const REACH: ReachItem[] = [
-  { flag: '🇨🇭', country: 'Switzerland', cities: 'Basel · Zürich' },
-  { flag: '🇩🇪', country: 'Germany', cities: 'Munich · Berlin' },
-  { flag: '🇫🇷', country: 'France', cities: 'Paris · Lyon' },
-  { flag: '🇪🇸', country: 'Spain', cities: 'Barcelona' },
-  { flag: '🇬🇧', country: 'United Kingdom', cities: 'London · Cambridge' },
-  { flag: '🇳🇱', country: 'Netherlands', cities: 'Amsterdam' },
-  { flag: '🇹🇼', country: 'Taiwan', cities: 'Taipei · Hsinchu', highlight: true },
+  { flag: '🇨🇭', country: 'Switzerland', cities: 'Basel · Zürich · Lausanne' },
+  { flag: '🇩🇪', country: 'Germany', cities: 'Munich · Berlin · Heidelberg' },
+  { flag: '🇫🇷', country: 'France', cities: 'Paris · Lyon · Strasbourg' },
+  { flag: '🇪🇸', country: 'Spain', cities: 'Barcelona · Madrid' },
+  { flag: '🇬🇧', country: 'United Kingdom', cities: 'London · Cambridge · Oxford' },
+  { flag: '🇳🇱', country: 'Netherlands', cities: 'Amsterdam · Leiden' },
+  { flag: '🇹🇼', country: 'Taiwan', cities: 'Taipei · Hsinchu · Tainan', highlight: true },
 ];
+
+/** Countries where members are active but no formal chapter team exists yet. */
+export const REACH_EMERGING = [
+  '🇸🇪 Sweden',
+  '🇩🇰 Denmark',
+  '🇧🇪 Belgium',
+  '🇮🇪 Ireland',
+  '🇮🇹 Italy',
+  '🇦🇹 Austria',
+  '🇵🇱 Poland',
+  '🇨🇿 Czechia',
+  '🇵🇹 Portugal',
+  '🇫🇮 Finland',
+];
+
+/* ───────── Europe ⇄ Taiwan corridor ───────── */
+
+export type Hub = { city: string; note: string };
+
+export const HUBS_EUROPE: Hub[] = [
+  { city: 'Basel', note: 'BioValley: pharma HQs and CDMOs' },
+  { city: 'Munich', note: 'Martinsried / BioM campus' },
+  { city: 'Cambridge', note: 'Genomics & therapeutics cluster' },
+  { city: 'Leiden', note: 'Bio Science Park' },
+  { city: 'Copenhagen–Lund', note: 'Medicon Valley' },
+  { city: 'Paris–Saclay', note: 'Genopole & academic spin-outs' },
+];
+
+export const HUBS_TAIWAN: Hub[] = [
+  { city: 'Taipei', note: 'Nangang Biotech Park' },
+  { city: 'Zhunan', note: 'National Biotechnology Research Park' },
+  { city: 'Hsinchu', note: 'Science Park: biochip and medtech' },
+  { city: 'Taichung', note: 'Central Taiwan Science Park' },
+  { city: 'Tainan', note: 'Southern Taiwan Science Park' },
+  { city: 'Kaohsiung', note: 'Precision medicine & clinical trials' },
+];
+
+export const CORRIDOR_FACTS = [
+  {
+    stat: '2 ecosystems',
+    body: "Europe's regulatory depth and clinical networks meet Taiwan's precision manufacturing and speed.",
+  },
+  {
+    stat: '1 network',
+    body: 'One membership reaches both sides, with no cold outreach and no guessing who to call.',
+  },
+  {
+    stat: '8 time zones',
+    body: 'Chapters and online programming scheduled so both sides can actually attend.',
+  },
+];
+
+/* ───────── biotech focus areas ───────── */
+
+export type Sector = {
+  title: string;
+  body: string;
+  tags: string[];
+};
+
+export const SECTORS: Sector[] = [
+  {
+    title: 'Drug discovery & translational medicine',
+    body: 'From target validation to first-in-human, connecting academic discovery with the groups that can move it forward.',
+    tags: ['Oncology', 'Immunology', 'Rare disease'],
+  },
+  {
+    title: 'Biomanufacturing & CDMO',
+    body: 'Process development, fill-finish, and scale-up, where Taiwanese capacity and European demand meet.',
+    tags: ['Upstream', 'Downstream', 'QA/QC'],
+  },
+  {
+    title: 'Precision medicine & genomics',
+    body: 'Sequencing, biomarkers, and companion diagnostics across two very different data and consent landscapes.',
+    tags: ['NGS', 'Biomarkers', 'Bioinformatics'],
+  },
+  {
+    title: 'Medtech & digital health',
+    body: 'Devices, biochips, and software as a medical device: Hsinchu hardware meeting European clinical validation.',
+    tags: ['SaMD', 'Devices', 'Biochips'],
+  },
+  {
+    title: 'Regulatory & market access',
+    body: 'EMA, TFDA, and national payers: the practical detail of getting a product approved and reimbursed on both sides.',
+    tags: ['EMA', 'TFDA', 'HTA'],
+  },
+  {
+    title: 'Investment & business development',
+    body: 'Licensing, joint ventures, and cross-border funding, plus the people who have already done the deal you are attempting.',
+    tags: ['Licensing', 'VC', 'M&A'],
+  },
+];
+
+/* ───────── events ───────── */
 
 export const EVENTS: EventItem[] = [
   {
@@ -40,20 +146,118 @@ export const EVENTS: EventItem[] = [
   {
     badge: 'Recurring',
     title: 'Country chapter meetups',
-    body: 'Informal evenings hosted by each country team — a low-pressure way to meet local members and visiting researchers.',
+    body: 'Informal evenings hosted by each country team, a low-pressure way to meet local members and visiting researchers.',
     cta: 'Find your chapter →',
   },
   {
     badge: 'Online',
     title: 'Seminars & webinars',
-    body: 'Talks on translational research, regulatory paths, and the business of biotech — recorded and shared with members.',
+    body: 'Talks on translational research, regulatory paths, and the business of biotech, recorded and shared with members.',
     cta: 'Suggest a topic →',
+  },
+  {
+    badge: 'Corporate',
+    title: 'Industry roundtables',
+    body: 'Closed-door sessions for business members on partnering, manufacturing capacity, and market entry in both directions.',
+    cta: 'Request a seat →',
+  },
+  {
+    badge: 'Delegations',
+    title: 'Site visits & trade missions',
+    body: 'Curated visits to science parks, CDMOs, and university spin-outs, timed around major European and Taiwanese biotech weeks.',
+    cta: 'Join a delegation →',
+  },
+  {
+    badge: 'Careers',
+    title: 'Career & mentoring nights',
+    body: 'CV clinics, mock interviews, and honest conversations about moving between academia, industry, and continents.',
+    cta: 'Become a mentor →',
   },
 ];
 
-export const MEMBER_BENEFITS = [
-  'Access to local chapter events and the wider member directory',
-  'Invitations to symposia, workshops, and online seminars',
-  "Introductions across our European and Taiwanese networks",
-  "A voice in shaping ETBA's future programming",
+/* ───────── membership ───────── */
+
+export type Tier = {
+  id: 'individual' | 'business';
+  eyebrow: string;
+  name: string;
+  price: string;
+  priceNote: string;
+  pitch: string;
+  audience: string[];
+  cta: string;
+  href: string;
+  featured?: boolean;
+};
+
+export const TIERS: Tier[] = [
+  {
+    id: 'individual',
+    eyebrow: 'For people',
+    name: 'Individual membership',
+    price: 'Free',
+    priceNote: 'no fee, no renewal',
+    pitch:
+      'For anyone working, or hoping to work, in biotech, pharma, or medtech with a connection to Taiwan and Europe. Students and early-career researchers especially welcome.',
+    audience: ['Students & PhDs', 'Postdocs', 'Industry professionals', 'Clinicians'],
+    cta: 'Join as an individual',
+    href: SIGNUP_INDIVIDUAL,
+  },
+  {
+    id: 'business',
+    eyebrow: 'For organisations',
+    name: 'Business membership',
+    price: 'Tailored',
+    priceNote: 'scoped to your organisation',
+    pitch:
+      'For companies, institutes, and investors that want a standing presence in both ecosystems, with named contacts on either side rather than a cold-outreach list.',
+    audience: ['Biotech & pharma', 'CDMOs & suppliers', 'Science parks', 'Investors & agencies'],
+    cta: 'Talk to us about business membership',
+    href: SIGNUP_BUSINESS,
+    featured: true,
+  },
+];
+
+/* ───────── ecosystem partners ───────── */
+
+export const ECOSYSTEM = [
+  { title: 'Universities & institutes', body: 'Research groups and tech-transfer offices on both continents.' },
+  { title: 'Science parks & incubators', body: 'From Nangang and Hsinchu to BioValley and Medicon Valley.' },
+  { title: 'Industry associations', body: 'Peer organisations that open doors we cannot open alone.' },
+  { title: 'Startups & scale-ups', body: 'Teams looking for their first partner, plant, or clinical site abroad.' },
+  { title: 'Investors & funds', body: 'Cross-border capital that understands both regulatory environments.' },
+  { title: 'Public agencies', body: 'Trade offices and innovation agencies supporting the corridor.' },
+];
+
+/* ───────── FAQ ───────── */
+
+export const FAQ = [
+  {
+    q: 'Who can join ETBA?',
+    a: 'Anyone working in, or moving towards, biotechnology, pharmaceuticals, or medical technology with an interest in the Europe–Taiwan corridor. You do not need to be Taiwanese, and you do not need to be based in Europe.',
+  },
+  {
+    q: 'Is individual membership really free?',
+    a: 'Yes. ETBA is a volunteer-driven non-profit. Individual membership carries no fee and no renewal. Some events have a small ticket price to cover venue and catering costs.',
+  },
+  {
+    q: 'What is the difference between individual and business membership?',
+    a: 'Individual membership is for a person and gives you access to the community, events, and directory. Business membership is for an organisation: it covers your whole team and adds partner-directory visibility, introductions, speaking and sponsorship slots, and market-entry support.',
+  },
+  {
+    q: 'How much does business membership cost?',
+    a: 'It is scoped to the size of your organisation and what you want out of it. Start with the business membership form and we will come back with a concrete proposal.',
+  },
+  {
+    q: 'How do local chapters work?',
+    a: 'Each country team organises its own meetups, in its own language mix, at its own rhythm. Joining ETBA connects you to all of them, and most members attend wherever they happen to be travelling.',
+  },
+  {
+    q: 'What language are events held in?',
+    a: 'English is the working language across the network. Chapter meetups often switch between English and Mandarin, and local languages come up over dinner.',
+  },
+  {
+    q: 'Can my company sponsor or host an event?',
+    a: 'Yes. Hosting a chapter evening or sponsoring a symposium session is one of the most direct ways to meet the community. Business members get first refusal on slots.',
+  },
 ];

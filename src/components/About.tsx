@@ -21,7 +21,7 @@ export default function About() {
           <p>
             We operate as a volunteer-driven, non-profit network of researchers
             and professionals. Our members work in academic labs, hospitals,
-            startups, and multinational companies — united by the belief that
+            startups, and multinational companies, united by the belief that
             the best science happens when borders are low and curiosity is high.
           </p>
           <a href="#membership" className="link-arrow">See how to join →</a>

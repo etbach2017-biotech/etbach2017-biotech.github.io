@@ -36,15 +36,15 @@ export default function Pillars() {
           <span className="section-eyebrow">What we do</span>
           <h2>Three pillars, one mission.</h2>
           <p className="section-sub">
-            Everything we organise — every meetup, every panel, every introduction —
-            traces back to one of these three commitments.
+            Every meetup, panel, and introduction we organise traces back to
+            one of these three commitments.
           </p>
         </div>
 
         <div className="pillar-grid">
           <PillarCard
             title="Network of experts"
-            body="A trusted community of biotech, pharma, and medtech professionals — connected across disciplines and continents."
+            body="A trusted community of biotech, pharma, and medtech professionals, connected across disciplines and continents."
             icon={
               <svg {...ICON_PROPS}>
                 <circle cx="14" cy="14" r="5" />
@@ -61,7 +61,7 @@ export default function Pillars() {
           />
           <PillarCard
             title="International collaboration"
-            body="Catalysing scientific and industrial partnerships between Taiwan and Europe — from joint research to co-development."
+            body="Catalysing scientific and industrial partnerships between Taiwan and Europe, from joint research to co-development."
             icon={
               <svg {...ICON_PROPS}>
                 <circle cx="24" cy="24" r="18" />

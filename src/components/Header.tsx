@@ -4,7 +4,7 @@ import Brand from './Brand';
 const NAV_LINKS = [
   { href: '#about', label: 'About' },
   { href: '#pillars', label: 'What we do' },
-  { href: '#reach', label: 'Reach' },
+  { href: '#corridor', label: 'Corridor' },
   { href: '#events', label: 'Events' },
   { href: '#membership', label: 'Membership' },
 ];
@@ -40,7 +40,7 @@ export default function Header() {
           {NAV_LINKS.map(link => (
             <a key={link.href} href={link.href} onClick={close}>{link.label}</a>
           ))}
-          <a href="mailto:contact@etba.ch" className="nav-cta" onClick={close}>Join us →</a>
+          <a href="#membership" className="nav-cta" onClick={close}>Join us →</a>
         </nav>
       </div>
     </header>

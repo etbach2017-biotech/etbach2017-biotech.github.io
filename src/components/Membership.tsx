@@ -1,41 +1,64 @@
-import { MEMBER_BENEFITS } from '../data/content';
+import { TIERS, type Tier } from '../data/content';
 import { useReveal } from '../hooks/useReveal';
 
-export default function Membership() {
-  const cardRef = useReveal<HTMLElement>();
-
+function TierCard({ tier }: { tier: Tier }) {
+  const ref = useReveal<HTMLElement>();
   return (
-    <section className="section" id="membership">
-      <div className="container join-wrap">
-        <div className="join-text">
+    <article
+      ref={ref}
+      className={`tier tier-${tier.id} ${tier.featured ? 'tier-featured' : ''}`}
+      aria-labelledby={`tier-${tier.id}-name`}
+    >
+      {tier.featured && <span className="tier-flag">Most requested by companies</span>}
+
+      <span className="tier-eyebrow">{tier.eyebrow}</span>
+      <h3 id={`tier-${tier.id}-name`}>{tier.name}</h3>
+
+      <p className="tier-price">
+        <strong>{tier.price}</strong>
+        <span>{tier.priceNote}</span>
+      </p>
+
+      <p className="tier-pitch">{tier.pitch}</p>
+
+      <ul className="tier-audience" aria-label="Who it is for">
+        {tier.audience.map(a => <li key={a}>{a}</li>)}
+      </ul>
+
+      <a
+        href={tier.href}
+        className={`btn ${tier.featured ? 'btn-primary' : 'btn-outline'} tier-cta`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {tier.cta}
+      </a>
+    </article>
+  );
+}
+
+export default function Membership() {
+  return (
+    <section className="section section-alt" id="membership">
+      <div className="container">
+        <div className="section-head center">
           <span className="section-eyebrow">Membership</span>
-          <h2>Find your people in the biotech world.</h2>
-          <p>
-            Membership is free and open to anyone working — or hoping to work —
-            in biotechnology, pharma, or medtech with a connection to Taiwan
-            and Europe. Students and early-career researchers are especially
-            welcome.
+          <h2>Two ways in, one network.</h2>
+          <p className="section-sub">
+            Join as a person or bring your organisation. Both routes open the
+            same Europe–Taiwan community; business membership adds the
+            visibility and platform a company needs.
           </p>
-          <ul className="check-list">
-            {MEMBER_BENEFITS.map(b => <li key={b}>{b}</li>)}
-          </ul>
-          <a
-            href="https://octagonal-giant-a45.notion.site/367f9cd0402f803cbc00e9130e746802?pvs=105"
-            className="btn btn-primary"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Sign up to join
-          </a>
         </div>
 
-        <aside className="join-card" ref={cardRef}>
-          <p className="join-quote">
-            “The most useful conference I went to all year wasn't a conference —
-            it was an ETBA dinner with eight people in Basel.”
-          </p>
-          <p className="join-attr">— ETBA member, postdoc, Switzerland</p>
-        </aside>
+        <div className="tier-grid">
+          {TIERS.map(t => <TierCard key={t.id} tier={t} />)}
+        </div>
+
+        <p className="tier-footnote">
+          Not sure which fits? Start as an individual; you can add an
+          organisation later without losing anything.
+        </p>
       </div>
     </section>
   );
