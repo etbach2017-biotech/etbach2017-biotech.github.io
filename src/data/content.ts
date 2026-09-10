@@ -27,6 +27,9 @@ export const CONTACT_EMAIL = 'contact@etba.ch';
 /** Public event calendar. Members subscribe once and get every ETBA event. */
 export const LUMA_URL = 'https://luma.com/etba';
 
+/** Company page. Where chapter activity and member news get posted. */
+export const LINKEDIN_URL = 'https://www.linkedin.com/company/etba/';
+
 /* ───────── reach ─────────
    Rendered as a single country line inside the "Focus areas" section. */
 
@@ -100,7 +103,7 @@ export const SECTORS: Sector[] = [
 export type NewsItem = {
   /** Displayed as-is, e.g. 'March 2026'. */
   date: string;
-  kind: 'Event' | 'Recap' | 'eDM' | 'Announcement' | 'Newsletter';
+  kind: 'Event' | 'Recap' | 'eDM' | 'Announcement';
   title: string;
   body: string;
   /**
@@ -108,7 +111,7 @@ export type NewsItem = {
    * this to `/news/<filename>`. Leave undefined for a text-only post.
    */
   image?: string;
-  /** Optional outward link: Luma page, newsletter issue, LinkedIn post, PDF. */
+  /** Optional outward link: Luma page, LinkedIn post, PDF. */
   href?: string;
   linkLabel?: string;
 };
@@ -127,12 +130,12 @@ export const NEWS: NewsItem[] = [
     linkLabel: 'Subscribe to the calendar →',
   },
   {
-    date: 'Every quarter',
-    kind: 'Newsletter',
-    title: 'ETBA quarterly newsletter',
-    body: 'A short round-up of chapter activity, member news, and openings across the Europe–Taiwan corridor. Members receive it by email; back issues are shared here.',
-    href: `mailto:${CONTACT_EMAIL}?subject=Newsletter`,
-    linkLabel: 'Ask for the latest issue →',
+    date: 'Ongoing',
+    kind: 'Announcement',
+    title: 'Follow ETBA on LinkedIn',
+    body: 'Chapter activity, member news, and openings across the Europe–Taiwan corridor, posted as they happen.',
+    href: LINKEDIN_URL,
+    linkLabel: 'Follow us on LinkedIn →',
   },
 ];
 
@@ -151,14 +154,14 @@ export type TeamMember = {
   photo?: string;
 };
 
-/** Current core team. Fill in the names and bases below as they are confirmed. */
+/** Current core team. */
 export const CORE_TEAM: TeamMember[] = [
-  { name: '', role: 'President' },
-  { name: '', role: 'Vice President' },
-  { name: '', role: 'Secretary General' },
-  { name: '', role: 'Treasurer' },
-  { name: '', role: 'Events & Programming' },
-  { name: '', role: 'Communications' },
+  { name: 'Yi-Heng Tai, PhD', role: 'President', photo: '/team/yi-heng-tai.png' },
+  { name: 'Tzu-Hsiang (Linus) Kao, PhD', role: 'Vice President & Founder', photo: '/team/linus-kao.jpeg' },
+  { name: 'Hsiao-Hsuan (Melody) Huang', role: 'Vice President', photo: '/team/melody-huang.jpeg' },
+  { name: 'Nathan Kaiser', role: 'Legal & Business Team Lead', photo: '/team/nathan-kaiser.jpeg' },
+  { name: 'Chia-Yun (Wendy) Wei', role: 'Legal & Project Manager', photo: '/team/wendy-wei.jpeg' },
+  { name: 'Cheng-Wei Liao', role: 'IT Manager', photo: '/team/cheng-wei-liao.jpeg' },
 ];
 
 /* ───────── membership ───────── */

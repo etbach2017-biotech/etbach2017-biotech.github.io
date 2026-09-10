@@ -1,5 +1,5 @@
 import Brand from './Brand';
-import { CONTACT_EMAIL, LUMA_URL, SIGNUP_BUSINESS, SIGNUP_INDIVIDUAL } from '../data/content';
+import { CONTACT_EMAIL, LINKEDIN_URL, LUMA_URL, SIGNUP_BUSINESS, SIGNUP_INDIVIDUAL } from '../data/content';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -26,8 +26,6 @@ export default function Footer() {
                 Business membership
               </a>
             </li>
-            <li><a href="#ecosystem">Partner with us</a></li>
-            <li><a href="#faq">FAQ</a></li>
           </ul>
         </div>
 
@@ -36,6 +34,7 @@ export default function Footer() {
           <ul>
             <li><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></li>
             <li><a href={LUMA_URL} target="_blank" rel="noopener noreferrer">Event calendar (Luma)</a></li>
+            <li><a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
           </ul>
         </div>
       </div>
